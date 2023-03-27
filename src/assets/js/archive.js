@@ -37,7 +37,7 @@ function updateTable(releases, os) {
           $(this).closest("tr").remove();
           event.preventDefault();
         });
-        $("<tr>").append($("<td colspan=\"5\"></td></tr>").append(showAll)).appendTo(table);
+        $("<tr>").append($("<td colspan=\"6\"></td></tr>").append(showAll)).appendTo(table);
       }
 
       var className = index >= releasesToShow ? "overflow" : "";
@@ -51,12 +51,14 @@ function updateTable(releases, os) {
       var dartSdkArch = $("<span />").text(
         release.dart_sdk_arch ? release.dart_sdk_arch : 'x64',
       );
+      var sha256sum = $("<span />").text(release.sha256);
       var date = new Date(Date.parse(release.release_date));
       $("<td />").append(downloadLink).appendTo(row);
       $("<td />").append(dartSdkArch).appendTo(row);
       $("<td />").append(hashLabel).appendTo(row);
       $("<td />").addClass("date").text(date.toLocaleDateString()).appendTo(row);
       $("<td />").append(dartSdkVersion).appendTo(row);
+      $("<td />").append(sha256sum).appendTo(row);
     });
   }
 }
